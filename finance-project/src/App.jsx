@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const current_theme = localStorage.getItem('current_theme');
+  const [theme, setTheme] = useState(current_theme ? current_theme : 'light');
 
-  return (
+  useEffect(() => {
+    localStorage.setItem('current_theme', theme);
+  }, [theme])
+
+  return(
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className={`container ${theme}`}>
+        <Header theme={theme} setTheme={setTheme}></Header>
       </div>
-      <h1>Finance Tracker</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <Home></Home>
+        <Footer></Footer>
     </>
-  )
+  );
 }
 
 export default App
