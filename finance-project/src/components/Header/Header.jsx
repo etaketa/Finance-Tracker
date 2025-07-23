@@ -8,7 +8,7 @@ function Header({theme, setTheme}) {
     return(
         <header>
             <div className={`navbar ${theme}`}>
-                <h1>Fianance Tracker</h1>
+                <h1>Finance Tracker</h1>
                 <img src="" alt="" className="logo"/>
                 <ul>
                     <div className='out-link'><Link to="/home" className='link'>Home</Link></div>

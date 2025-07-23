@@ -1,7 +1,6 @@
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
-import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
 import Budget from "./pages/Budget/Budget";
 import Transactions from "./pages/Transactions/Transactions";
@@ -14,6 +13,8 @@ function App() {
     <>
     <div className="container">
         <BrowserRouter>
+        <Header></Header>
+        <main className="main-content">
           <Routes>
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
@@ -22,6 +23,8 @@ function App() {
             <Route path="/reports" element={<Reports />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
+          </main>
+          <Footer></Footer>
         </BrowserRouter>
       </div>
     </>
