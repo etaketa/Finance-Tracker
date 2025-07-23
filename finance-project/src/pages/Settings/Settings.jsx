@@ -1,5 +1,3 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import dark from '../../assets/sun.png';
 import light from '../../assets/moon.png';
 import { useEffect, useState } from "react";
@@ -19,9 +17,7 @@ function Settings() {
 
     return(
         <> 
-            <Header/>
             <h2>Settings Page</h2>
-            <Footer/>
                 {/* <img onClick={() => {toggle_mode()}} src={theme == 'light' ? light : dark} alt="" className="toggle-icon"/> */}
         </>
     );

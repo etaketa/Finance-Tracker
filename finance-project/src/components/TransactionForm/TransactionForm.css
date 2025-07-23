@@ -1,0 +1,23 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 1rem;
+    margin: 0 auto;
+    background-color: #a7f3c9;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+  padding: 0.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

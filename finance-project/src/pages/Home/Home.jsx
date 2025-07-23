@@ -1,13 +1,10 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import './Home.css'
 
 function Home() {
 
     return(
         <>
-            <Header/>
             <h2>Welcome!</h2>
-            <Footer/>
         </>
     );
 }
