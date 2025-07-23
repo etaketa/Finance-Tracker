@@ -12,30 +12,24 @@
     color: white;
 }
 
-.toggle-icon {
-    width: 50px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
 ul {
     flex: 1;
     list-style: none;
     text-align: center;
 }
 
-ul li {
+.out-link{
     display: inline-block;
     margin: 10px 20px;
     font-size: 18px;
     cursor: pointer;
 }
 
-ul li a {
+.link {
     text-decoration: none;
     color: #222;
 }
 
-.dark ul li a {
+.dark .link {
     color: white;
 }

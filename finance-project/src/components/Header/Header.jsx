@@ -1,12 +1,9 @@
 import dark from '../../assets/sun.png';
 import light from '../../assets/moon.png';
 import './Header.css'
+import { Link } from 'react-router-dom';
 
 function Header({theme, setTheme}) {
-
-    const toggle_mode = () => {
-        theme == 'light' ? setTheme('dark') : setTheme('light');
-    }
 
     return(
         <header>
@@ -14,12 +11,12 @@ function Header({theme, setTheme}) {
                 <h1>Fianance Tracker</h1>
                 <img src="" alt="" className="logo"/>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="">Budget</a></li>
-                    <li><a href="">Transactions</a></li>
-                    <li><a href="">Reports</a></li>
+                    <div className='out-link'><Link to="/home" className='link'>Home</Link></div>
+                    <div className='out-link'><Link to="/budget" className='link'>Budget</Link></div>
+                    <div className='out-link'><Link to="/transactions" className='link'>Transactions</Link></div>
+                    <div className='out-link'><Link to="/reports" className='link'>Reports</Link></div>
+                    <div className='out-link'><Link to="/settings" className='link'>Settings</Link></div>
                 </ul>
-                <img onClick={() => {toggle_mode()}} src={theme == 'light' ? light : dark} alt="" className="toggle-icon"/>
             </div>
         </header>
     );
