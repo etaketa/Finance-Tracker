@@ -1,4 +1,45 @@
+
 h2 {
     font-size: 40px;
     padding-top: 25px;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin-top: 20px;
+    text-align: center;
+    width: 90%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+}
+
+.total {
+    color: white;
+    float: right;
+    padding-right: 75px;
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+.amount-add {
+  color: green;
+}
+
+.amount-remove {
+  color: red;
 }

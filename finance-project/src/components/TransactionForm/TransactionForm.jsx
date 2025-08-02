@@ -5,6 +5,7 @@ function TransactionForm( {onSubmit} ) {
 
     const [formData, setFormData] = useState({
         amount : '',
+        memo: '',
         add : true
     });
 
@@ -12,9 +13,10 @@ function TransactionForm( {onSubmit} ) {
         e.preventDefault();
         console.log('submitted', formData);
         if (formData.amount === '') return;
+        if (formData.memo === '') return;
 
         onSubmit(formData);
-        setFormData({ amount: '', add: true });
+        setFormData({ amount: '', memo: '', add: true });
     }
 
     const handleAmountChange = (e) => {
@@ -32,6 +34,7 @@ function TransactionForm( {onSubmit} ) {
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
                     <label>Amount: <input type="text" name="amount" value={formData.amount} onChange={handleAmountChange}/></label>
+                    <label>Memo: <input type="text" name="memo" value={formData.memo} onChange={handleAmountChange}/></label>
                     <label htmlFor="category">Add or remove: </label>
                     <select id="category" value={formData.add.toString()} onChange={handleDropdown}>
                         <option value="">-- Select --</option>
