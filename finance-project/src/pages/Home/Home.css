@@ -8,10 +8,17 @@ h2 {
 .graph {
     margin-top: 25px;
     margin-right: 100px;
-    float: right;
     width: 400px;
     background-color: white;
     border-radius: 10px;
     height: 400px;
     padding: 10px;
+}
+
+.goal {
+    float: right;
+}
+
+.goal-form {
+    color: white;
 }

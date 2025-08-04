@@ -5,7 +5,7 @@ const TransactionContext = createContext();
 export function TransactionProvider ({children}) {
     const [total, setTotal] = useState(0);
     const [transactions, setTransactions] = useState([]);
-    const [goal, setGoal] = useState(10000);
+    const [goal, setGoal] = useState(0);
 
     const handleTransaction = ({ amount, add, memo }) => {
         const numericAmount = parseFloat(amount);
