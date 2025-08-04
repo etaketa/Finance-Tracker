@@ -1,32 +1,11 @@
 import './Transactions.css'
 import TransactionForm from '../../components/TransactionForm/TransactionForm';
 import { useState } from 'react';
+import { useTransactions } from './TransactionContext';
 
 function Transactions() {
 
-    const [total, setTotal] = useState(0);
-    const [transactions, setTransactions] = useState([]);
-
-    const handleTransaction = ({ amount, add, memo }) => {
-        const numericAmount = parseFloat(amount);
-        console.log("memo: " + memo);
-        
-        if (isNaN(numericAmount)) return;
-
-        const newTotal = add ? total + numericAmount : total - numericAmount;
-
-        const newTransaction = {
-            amount: numericAmount,
-            type: add ? 'Add' : 'Remove',
-            newMemo: memo,
-            newBalance: newTotal,
-            sign: add ? '+' : '-'
-        };
-        setTotal(newTotal);
-        setTransactions(prev => [...prev, newTransaction]);
-
-
-    };
+    const {total, transactions, goal, setGoal, handleTransaction} = useTransactions();
 
     return(
         <>
@@ -48,14 +27,14 @@ function Transactions() {
                         <tr key={tx.id}>
                         <td>{tx.newMemo}</td>
                         <td>{tx.type}</td>
-                        <td className={tx.type === 'Add' ? 'amount-add' : 'amount-remove'}>{tx.sign}${tx.amount.toFixed(2)}</td>
-                        <td>${tx.newBalance.toFixed(2)}</td>
+                        <td className={tx.type === 'Add' ? 'amount-add' : 'amount-remove'}>{tx.sign}${tx.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                        <td>${tx.newBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
             </div>
-            <h1 className='total'>Total: ${total.toFixed(2)}</h1>
+            <h1 className='total'>Total: ${total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</h1>
         </>
     );
 }
