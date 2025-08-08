@@ -5,7 +5,7 @@ import { useTransactions } from './TransactionContext';
 
 function Transactions() {
 
-    const {total, transactions, goal, setGoal, handleTransaction} = useTransactions();
+    const {total, transactions, categoryTotals, goal, setGoal, handleTransaction} = useTransactions();
 
     return(
         <>
@@ -18,6 +18,7 @@ function Transactions() {
                     <tr>
                         <th>Memo</th>
                         <th>Transaction Type</th>
+                        <th>Category</th>
                         <th>Amount</th>
                         <th>Balance</th>
                     </tr>
@@ -27,6 +28,7 @@ function Transactions() {
                         <tr key={tx.id}>
                         <td>{tx.newMemo}</td>
                         <td>{tx.type}</td>
+                        <td>{tx.newCategory}</td>
                         <td className={tx.type === 'Add' ? 'amount-add' : 'amount-remove'}>{tx.sign}${tx.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                         <td>${tx.newBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                         </tr>
