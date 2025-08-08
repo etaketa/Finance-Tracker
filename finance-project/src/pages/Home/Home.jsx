@@ -3,6 +3,7 @@ import { Chart as ChartJS, defaults } from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 import { useTransactions } from '../Transactions/TransactionContext';
 import { useState } from 'react';
+import DashboardExpenses from '../../components/DashboardGoal/DashboardExpenses';
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -12,7 +13,7 @@ defaults.plugins.title.color = "black";
 
 function Home() {
 
-    const {total, transactions, goal, setGoal, handleTransaction} = useTransactions();
+    const {total, transactions, categoryTotals, goal, setGoal, handleTransaction} = useTransactions();
     const graph_title = `Goal: $${total.toLocaleString()}/$${goal.toLocaleString()}`;
 
     const [newGoal, setNewGoal] = useState('');
@@ -56,6 +57,7 @@ function Home() {
                         <button type="submit">Submit</button>
                     </form>
             </div>
+            <DashboardExpenses></DashboardExpenses>
         </>
     );
 };

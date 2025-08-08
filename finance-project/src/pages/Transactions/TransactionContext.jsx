@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useMemo } from "react";
 
 const TransactionContext = createContext();
 
@@ -7,9 +7,8 @@ export function TransactionProvider ({children}) {
     const [transactions, setTransactions] = useState([]);
     const [goal, setGoal] = useState(0);
 
-    const handleTransaction = ({ amount, add, memo }) => {
+    const handleTransaction = ({ amount, add, memo, category }) => {
         const numericAmount = parseFloat(amount);
-        console.log("memo: " + memo);
         
         if (isNaN(numericAmount)) return;
 
@@ -20,7 +19,8 @@ export function TransactionProvider ({children}) {
             type: add ? 'Add' : 'Remove',
             newMemo: memo,
             newBalance: newTotal,
-            sign: add ? '+' : '-'
+            sign: add ? '+' : '-',
+            newCategory: category
         };
         setTotal(newTotal);
         setTransactions(prev => [...prev, newTransaction]);
@@ -28,8 +28,25 @@ export function TransactionProvider ({children}) {
 
     };
 
+    const categoryTotals = useMemo(() => {
+        const categories = {
+            Bills: 0,
+            Shopping: 0,
+            Food: 0,
+            Fun: 0,
+        };
+
+        transactions.forEach(tx => {
+            if (categories.hasOwnProperty(tx.newCategory)) {
+            categories[tx.newCategory] += tx.amount;
+            }
+        });
+
+        return categories;
+    }, [transactions]);
+
     return (
-        <TransactionContext.Provider value={{ total, transactions, goal, setGoal, handleTransaction }}>
+        <TransactionContext.Provider value={{ total, transactions, categoryTotals, goal, setGoal, handleTransaction }}>
         {children}
         </TransactionContext.Provider>
     );
